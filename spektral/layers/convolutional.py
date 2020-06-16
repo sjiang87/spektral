@@ -99,6 +99,8 @@ class GraphConv(Layer):
         self.supports_masking = False
 
     def build(self, input_shape):
+        # BRUCENOTE
+        input_shape = _tensorshape_tolist(input_shape)
         assert len(input_shape) >= 2
         input_dim = input_shape[0][-1]
         self.kernel = self.add_weight(shape=(input_dim, self.channels),
@@ -232,6 +234,8 @@ class ChebConv(GraphConv):
         self.supports_masking = False
 
     def build(self, input_shape):
+        # BRUCENOTE
+        input_shape = _tensorshape_tolist(input_shape)
         assert len(input_shape) >= 2
         input_dim = input_shape[0][-1]
         support_len = len(input_shape) - 1
@@ -360,6 +364,7 @@ class GraphSageConv(GraphConv):
                              'prod')
 
     def build(self, input_shape):
+        # BRUCENOTE
         input_shape = _tensorshape_tolist(input_shape)
         assert len(input_shape) >= 2
         input_dim = input_shape[0][-1]
@@ -484,6 +489,8 @@ class EdgeConditionedConv(GraphConv):
         self.supports_masking = False
 
     def build(self, input_shape):
+        # BRUCENOTE
+        input_shape = _tensorshape_tolist(input_shape)
         assert len(input_shape) >= 2
         if self.use_bias:
             self.bias = self.add_weight(shape=(self.channels,),
@@ -713,6 +720,8 @@ class GraphAttention(GraphConv):
             self.output_dim = self.channels
 
     def build(self, input_shape):
+        # BRUCENOTE
+        input_shape = _tensorshape_tolist(input_shape)
         assert len(input_shape) >= 2
         input_dim = input_shape[0][-1]
 
@@ -916,6 +925,8 @@ class GraphConvSkip(GraphConv):
         self.supports_masking = False
 
     def build(self, input_shape):
+        # BRUCENOTE
+        input_shape = _tensorshape_tolist(input_shape)
         assert len(input_shape) >= 2
         input_dim = input_shape[0][-1]
 
@@ -1060,6 +1071,8 @@ class ARMAConv(GraphConv):
         self.supports_masking = False
 
     def build(self, input_shape):
+        # BRUCENOTE
+        input_shape = _tensorshape_tolist(input_shape)
         assert len(input_shape) >= 2
         # When using shared weights, pre-compute them here
         if self.share_weights:
@@ -1359,6 +1372,8 @@ class APPNP(GraphConv):
         self.bias_constraint = constraints.get(bias_constraint)
 
     def build(self, input_shape):
+        # BRUCENOTE
+        input_shape = _tensorshape_tolist(input_shape)
         assert len(input_shape) >= 2
         self.kernels_mlp = []
         self.biases_mlp = []
@@ -1547,6 +1562,8 @@ class GINConv(GraphConv):
         self.supports_masking = False
 
     def build(self, input_shape):
+        # BRUCENOTE
+        input_shape = _tensorshape_tolist(input_shape)
         assert len(input_shape) >= 2
         input_dim = input_shape[0][-1]
 
