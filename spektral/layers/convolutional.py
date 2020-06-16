@@ -1,7 +1,7 @@
 import tensorflow as tf
-from keras import activations, initializers, regularizers, constraints
-from keras import backend as K
-from keras.layers import Layer, LeakyReLU, Dropout
+from tensorflow.keras import activations, initializers, regularizers, constraints
+from tensorflow.keras import backend as K
+from tensorflow.keras.layers import Layer, LeakyReLU, Dropout
 
 from spektral.layers.ops import filter_dot
 from spektral.layers import ops
@@ -353,6 +353,7 @@ class GraphSageConv(GraphConv):
     def build(self, input_shape):
         assert len(input_shape) >= 2
         input_dim = input_shape[0][-1]
+        print(input_dim, type(input_dim), input_shape, type(input_shape))  # BRUCENOTE
         self.kernel = self.add_weight(shape=(2 * input_dim, self.channels),
                                       initializer=self.kernel_initializer,
                                       name='kernel',

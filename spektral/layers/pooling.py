@@ -1,7 +1,7 @@
 import tensorflow as tf
-from keras import backend as K, activations
-from keras import regularizers, constraints, initializers
-from keras.engine import Layer
+from tensorflow.keras import backend as K, activations
+from tensorflow.keras import regularizers, constraints, initializers
+from tensorflow.keras.layers import Layer
 
 from spektral.layers import ops, filter_dot
 

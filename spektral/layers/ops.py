@@ -1,7 +1,7 @@
 import numpy as np
 import scipy.sparse as sp
 import tensorflow as tf
-from keras import backend as K
+from tensorflow.keras import backend as K
 
 modes = {
     'S': 1,    # Single (rank(A)=2, rank(B)=2)
