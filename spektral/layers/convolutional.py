@@ -7,6 +7,15 @@ from spektral.layers.ops import filter_dot
 from spektral.layers import ops
 
 
+#BRUCENOTE
+def _tensorshape_tolist(input_shape):
+    if type(input_shape) is list:
+        input_shape = [item.as_list() for item in input_shape]
+    else:
+        input_shape = input_shape.as_list()
+    return input_shape
+
+
 class GraphConv(Layer):
     """
     A graph convolutional layer as presented by
@@ -351,9 +360,9 @@ class GraphSageConv(GraphConv):
                              'prod')
 
     def build(self, input_shape):
+        input_shape = _tensorshape_tolist(input_shape)
         assert len(input_shape) >= 2
         input_dim = input_shape[0][-1]
-        print(input_dim, type(input_dim), input_shape, type(input_shape))  # BRUCENOTE
         self.kernel = self.add_weight(shape=(2 * input_dim, self.channels),
                                       initializer=self.kernel_initializer,
                                       name='kernel',
